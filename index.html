@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💧 Guía Científica de Hidratación - Prevención Deshidratación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #74b9ff, #0984e3, #00b894, #fdcb6e, #e17055);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
+            color: #2d3436;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            width: 0%;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(102,126,234,0.5);
+        }
+
+        /* Header Full Width */
+        header {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(25px);
+            padding: 3rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            margin-bottom: 3rem;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(102,126,234,0.3);
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 8px #667eea); }
+            to { filter: drop-shadow(0 0 16px #764ba2); }
+        }
+
+        header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            animation: bounceIn 2s ease;
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: #5a6c7d;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Container Full Width */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Secciones Full Width */
+        section {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            margin: 3rem 0;
+            padding: 3.5rem 4rem;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.12);
+            border: 2px solid rgba(255,255,255,0.4);
+            transform: translateY(40px);
+            opacity: 0;
+            animation: slideUp 1s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section:nth-child(odd) { animation-delay: 0.2s; }
+        section:nth-child(even) { animation-delay: 0.4s; }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #fd79a8);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Colores por sección */
+        #introduccion { border-top: 8px solid #00b894; }
+        #importancia { border-top: 8px solid #fdcb6e; }
+        #recomendaciones { border-top: 8px solid #3498db; }
+        #causas { border-top: 8px solid #f39c12; }
+        #consecuencias { border-top: 8px solid #e74c3c; }
+        #ventajas { border-top: 8px solid #27ae60; }
+
+        h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #2c3e50 0%, #34495e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin: 2rem 0 1.2rem 0;
+        }
+
+        /* Grid Full Width */
+        .grid-3, .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,249,250,0.9));
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+            border-color: rgba(102,126,234,0.3);
+        }
+
+        /* Iconos en lugar de imágenes */
+        .icon-container {
+            text-align: center;
+            margin: 1.5rem 0;
+            font-size: 4rem;
+        }
+
+        .icon-hero {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s infinite;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Listas mejoradas */
+        .science-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1rem;
+        }
+
+        .science-list li {
+            padding: 1rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(236,240,241,0.6);
+            transition: all 0.3s ease;
+        }
+
+        .science-list li:last-child {
+            border-bottom: none;
+        }
+
+        .science-list li:hover {
+            padding-left: 3rem;
+            color: #667eea;
+        }
+
+        .science-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(102,126,234,0.5);
+        }
+
+        /* CTA */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2.5rem auto;
+            display: block;
+            width: fit-content;
+            transition: all 0.4s ease;
+            box-shadow: 0 12px 35px rgba(102,126,234,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(102,126,234,0.5);
+        }
+
+        /* Footer Full Width */
+        footer {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: #dfe6e9;
+            text-align: center;
+            padding: 4rem 3rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header, .container { padding-left: 2rem; padding-right: 2rem; }
+            section { padding: 2.5rem 2rem; margin: 2rem 0; }
+            .logo-title { font-size: 2.2rem; }
+            header h1 { font-size: 2rem; }
+            h2 { font-size: 2rem; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 1.5rem; }
+            .card { padding: 2rem 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            header, .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+            section { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo-title">💧 Hidratación Médica</div>
+            <h1>Guía Científica Completa de Hidratación</h1>
+            <p class="header-subtitle">
+                Evidencia médica para prevenir deshidratación en estudiantes, niños, embarazadas, deportistas y población general
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Introducción -->
+        <section id="introduccion">
+            <h2>🔬 Introducción Científica</h2>
+            <div class="icon-container">
+                <i class="fas fa-dna icon-hero"></i>
+            </div>
+            <p style="font-size: 1.2rem; text-align: center; line-height: 1.8; color: #5a6c7d; max-width: 1200px; margin: 0 auto 2rem;">
+                <strong>El agua constituye 60-70% del peso corporal</strong> y participa en <em>todas</em> las funciones fisiológicas. 
+                Estudios del <em>American Journal of Clinical Nutrition</em> demuestran que deshidratación leve (1-2%) reduce 
+                rendimiento cognitivo en <strong>20-30%</strong>.
+            </p>
+        </section>
+
+        <!-- Importancia -->
+        <section id="importancia">
+            <h2>📊 Importancia Biológica</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-brain" style="color: #3498db; font-size: 2.5rem;"></i></div>
+                    <h3>Cognitiva</h3>
+                    <ul class="science-list">
+                        <li>+25% concentración</li>
+                        <li>Mejor memoria trabajo</li>
+                        <li>-40% fatiga mental</li>
+                        <li>Menos cefaleas tensionales</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-heartbeat" style="color: #e74c3c; font-size: 2.5rem;"></i></div>
+                    <h3>Cardiovascular</h3>
+                    <ul class="science-list">
+                        <li>Volumen plasmático óptimo</li>
+                        <li>Presión arterial estable</li>
+                        <li>Mejor circulación periférica</li>
+                        <li>Reducción estrés oxidativo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-dumbbell" style="color: #27ae60; font-size: 2.5rem;"></i></div>
+                    <h3>Muscular</h3>
+                    <ul class="science-list">
+                        <li>-40% riesgo lesiones</li>
+                        <li>Recuperación +30% rápida</li>
+                        <li>Contracción muscular eficiente</li>
+                        <li>Menos calambres nocturnos</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-kidneys" style="color: #f39c12; font-size: 2.5rem;"></i></div>
+                    <h3>Renal</h3>
+                    <ul class="science-list">
+                        <li>-60% cálculos renales</li>
+                        <li>Filtración glomerular óptima</li>
+                        <li>Prevención insuficiencia renal</li>
+                        <li>Mejor detoxificación</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recomendaciones -->
+        <section id="recomendaciones">
+            <h2>💧 Requerimientos por Grupo</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-child" style="color: #00b894; font-size: 3rem;"></i></div>
+                    <h3>Niños y Estudiantes</h3>
+                    <ul class="science-list">
+                        <li>1-3 años: 1.0-1.3 L/día</li>
+                        <li>4-8 años: 1.6-2.0 L/día</li>
+                        <li>9-13 años: 2.0-2.6 L/día</li>
+                        <li>14-18 años: 2.5-3.3 L/día</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-user-pregnant" style="color: #e74c3c; font-size: 3rem;"></i></div>
+                    <h3>Embarazadas y Lactancia</h3>
+                    <ul class="science-list">
+                        <li>Embarazo: 2.8-3.0 L (+0.3L)</li>
+                        <li>Lactancia: 3.5-4.0 L (+1L)</li>
+                        <li>Fórmula: 35-40 ml/kg peso</li>
+                        <li><strong>¡Esencial para bebé!</strong></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-running" style="color: #3498db; font-size: 3rem;"></i></div>
+                    <h3>Deportistas y Adultos</h3>
+                    <ul class="science-list">
+                        <li>Hombres: 2.5-3.7 L/día</li>
+                        <li>Ejercicio: 0.5-1.5 L/hora</li>
+                        <li>Clima cálido: +0.5-1.0 L</li>
+                        <li>Regla oro: Orina pálida</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="#causas" class="cta-button">Ver Causas Comunes</a>
+            </div>
+        </section>
+
+        <!-- Causas -->
+        <!-- Causas -->
+        <section id="causas">
+            <h2>⚠️ Causas Científicas de Deshidratación</h2>
+            <div class="icon-container">
+                <i class="fas fa-exclamation-triangle icon-hero" style="color: #f39c12;"></i>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🌡️ Ambientales</h3>
+                    <ul class="science-list">
+                        <li>Temperatura >30°C (+500ml)</li>
+                        <li>Humedad <40% (pérdida insensible)</li>
+                        <li>Aire acondicionado (nariz seca)</li>
+                        <li>Altitud >2000m (+1L/día)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🍹 Comportamentales</h3>
+                    <ul class="science-list">
+                        <li>Café/alcohol (efecto diurético)</li>
+                        <li>Refrescos azucarados (no hidratan)</li>
+                        <li>Estudio >4h sin pausas</li>
+                        <li>Trabajo oficina sin botellas</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🦠 Patológicas</h3>
+                    <ul class="science-list">
+                        <li>Diarrea: 200-500ml/episodio</li>
+                        <li>Fiebre 38°C: +500ml/día</li>
+                        <li>Diabetes no controlada</li>
+                        <li>Infecciones respiratorias</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consecuencias -->
+        <section id="consecuencias">
+            <h2>💀 Consecuencias Graves</h2>
+            <div class="icon-container">
+                <i class="fas fa-skull-crossbones icon-hero" style="color: #e74c3c;"></i>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🧠 Sistema Nervioso</h3>
+                    <ul class="science-list">
+                        <li>-20-30% rendimiento cognitivo</li>
+                        <li>Cefalea (dolor 6/10)</li>
+                        <li>Confusión >2% deshidratación</li>
+                        <li>Convulsiones >5% (niños)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>❤️ Cardiovascular</h3>
+                    <ul class="science-list">
+                        <li>Taquicardia >100 lpm</li>
+                        <li>Hipotensión ortostática</li>
+                        <li>Shock hipovolémico >10%</li>
+                        <li>Mortalidad 20-40% casos graves</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🔬 Órganos Críticos</h3>
+                    <ul class="science-list">
+                        <li>Insuficiencia renal aguda</li>
+                        <li>Rabdomiólisis (daño muscular)</li>
+                        <li>Coagulación intravascular</li>
+                        <li>Edema cerebral grave</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ventajas y Desventajas -->
+        <section id="ventajas">
+            <h2>⚖️ Ventajas vs Desventajas</h2>
+            <div class="grid-3">
+                <div class="card" style="border-left: 8px solid #27ae60;">
+                    <div class="icon-container"><i class="fas fa-check-circle" style="color: #27ae60; font-size: 3rem;"></i></div>
+                    <h3 style="color: #27ae60;">✅ Hidratación Óptima</h3>
+                    <ul class="science-list">
+                        <li>+25% rendimiento académico</li>
+                        <li>-50% riesgo cálculos renales</li>
+                        <li>Recuperación muscular 2x más rápida</li>
+                        <li>Piel hidratada y elástica</li>
+                        <li>Mejor digestión intestinal</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left: 8px solid #e74c3c;">
+                    <div class="icon-container"><i class="fas fa-times-circle" style="color: #e74c3c; font-size: 3rem;"></i></div>
+                    <h3 style="color: #e74c3c;">❌ Deshidratación Crónica</h3>
+                    <ul class="science-list">
+                        <li>-30% concentración estudiantes</li>
+                        <li>+300% riesgo golpe calor</li>
+                        <li>Cálculos renales recurrentes</li>
+                        <li>Fatiga crónica permanente</li>
+                        <li>Envejecimiento prematuro piel</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon-container"><i class="fas fa-chart-line" style="color: #3498db; font-size: 3rem;"></i></div>
+                    <h3>📈 Estudios Referenciados</h3>
+                    <ul class="science-list">
+                        <li>Pross 2014: Cognición ↓20%</li>
+                        <li>EFSA 2010: 2L/día mujeres</li>
+                        <li>ACSM 2007: 2%↓ rendimiento</li>
+                        <li>NIH: Niños más vulnerables</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="#recomendaciones" class="cta-button">
+                    <i class="fas fa-calculator"></i> Calcular Mi Dosis Personal
+                </a>
+            </div>
+        </section>
+
+        <!-- Protocolo Final -->
+        <section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
+            <h2 style="color: white; background: none; margin-bottom: 3rem;">💡 Protocolo Hidratación Diaria</h2>
+            <div class="grid-3">
+                <div class="card" style="background: rgba(255,255,255,0.15); color: white; border-left: 6px solid rgba(255,255,255,0.5);">
+                    <h3 style="color: white;"><i class="fas fa-clock"></i> Horario Estratégico</h3>
+                    <ul class="science-list" style="color: white;">
+                        <li>07:00 - 500ml desayuno</li>
+                        <li>10:00 - 300ml media mañana</li>
+                        <li>13:00 - 500ml comida</li>
+                        <li>16:00 - 300ml merienda</li>
+                        <li>20:00 - 500ml cena</li>
+                        <li>22:00 - 250ml antes dormir</li>
+                    </ul>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.15); color: white; border-left: 6px solid rgba(255,255,255,0.5);">
+                    <h3 style="color: white;"><i class="fas fa-chart-bar"></i> Indicadores Biológicos</h3>
+                    <ul class="science-list" style="color: white;">
+                        <li>Orina: Amarillo pálido ideal</li>
+                        <li>Piel: Elástica al pellizco</li>
+                        <li>Boca: Humedad normal</li>
+                        <li>Sed: Leve y constante</li>
+                        <li>Peso: Estable diario</li>
+                    </ul>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.15); color: white; border-left: 6px solid rgba(255,255,255,0.5);">
+                    <h3 style="color: white;"><i class="fas fa-flask"></i> Tips Científicos</h3>
+                    <ul class="science-list" style="color: white;">
+                        <li>Botella reutilizable 1L siempre</li>
+                        <li>Agua + limón (electrolitos naturales)</li>
+                        <li>Evita >500ml de golpe (absorción)</li>
+                        <li>Temperatura fría estimula sed</li>
+                        <li>App recordatorio cada 2h</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-family: 'Merriweather', serif; margin-bottom: 1.5rem; font-size: 1.8rem;">
+                📚 Referencias Científicas Completas
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div>
+                    <strong>Estudios Clave:</strong>
+                    <ul style="list-style: disc; padding-left: 1.5rem; font-size: 1rem; opacity: 0.9;">
+                        <li>Pross N. et al. (2014) - Effects of dehydration on cognition</li>
+                        <li>EFSA Panel (2010) - Scientific Opinion on Dietary Reference Values for water</li>
+                        <li>ACSM (2007) - Exercise and Fluid Replacement</li>
+                        <li>NIH - Pediatric Dehydration Guidelines</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>Organizaciones:</strong>
+                    <ul style="list-style: disc; padding-left: 1.5rem; font-size: 1rem; opacity: 0.9;">
+                        <li>American Journal of Clinical Nutrition</li>
+                        <li>European Food Safety Authority (EFSA)</li>
+                        <li>American College of Sports Medicine</li>
+                        <li>World Health Organization (WHO)</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; opacity: 0.8; font-size: 1.1rem;">
+                © 2024 Guía Científica de Hidratación | Basada en evidencia médica actualizada | 
+                <strong style="color: #74b9ff;">¡Hidrátrate hoy, vive mejor mañana!</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Progress Bar suave
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Smooth scroll para todos los links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax sutil para header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('header');
+            if (header) {
+                header.style.transform = `translateY(${Math.min(scrolled * 0.3, 20)}px)`;
+            }
+        });
+
+        // Animación entrada staggered para cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
